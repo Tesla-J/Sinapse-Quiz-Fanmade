@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sinapse Quiz</string>
+    <string name="Pergunta">Mercúrio é o planeta mais quente do sistema solar.</string>
+    <string name="botao_verdade">Verdade</string>
+    <string name="botao_mentira">Mentira</string>
+    <string name="correct_answer">Correcto</string>
+    <string name="incorrect_answer">incorrecto</string>
+</resources>
