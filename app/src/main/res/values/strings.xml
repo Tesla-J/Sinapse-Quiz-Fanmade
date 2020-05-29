@@ -4,7 +4,8 @@
     <string name="botao_mentira">Mentira</string>
     <string name="correct_answer">Correcto</string>
     <string name="incorrect_answer">incorrecto</string>
-    <string name="botao_next">Próxima Pergunta</string>
+    <string name="botao_next">Botão para a próxima pergunta</string>
+    <string name="botao_preview">Botão para a próxima pergunta</string>
 
     <string name="pergunta_astronomia_1">Mercúrio é o planeta mais quente do Sistema Solar</string>
     <string name="pergunta_astronomia_2">Nós não podemos ver um buraco negro</string>

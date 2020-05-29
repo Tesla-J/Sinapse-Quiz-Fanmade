@@ -5,14 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button mBotaoMentira;
     private Button mBotaoVerdade;
-    private Button mBotaoNext;
-    private Button mBotaoPrevious;
+    private ImageButton mBotaoNext;
+    private ImageButton mBotaoPrevious;
     private TextView mTextViewPergunta;
 
     private FalseTrue[] mListaDePerguntas = new FalseTrue[] {
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mBotaoNext = (Button) findViewById(R.id.botao_next);
+        mBotaoNext = (ImageButton) findViewById(R.id.botao_next);
         mBotaoNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

@@ -44,25 +44,21 @@
         android:layout_height="wrap_content"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/botao_previous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@mipmap/arrow_left"
-            android:drawableStart="@mipmap/arrow_left"
-            android:drawablePadding="4dp"
-            android:text="Pergunta anterior"
+            android:src="@mipmap/arrow_left"
+            android:contentDescription="@string/botao_preview"
             />
         -
 
-        <Button
+        <ImageButton
             android:id="@+id/botao_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/botao_next"
-            android:drawableRight="@mipmap/arrow_right"
-            android:drawablePadding="4dp"
-            android:drawableEnd="@mipmap/arrow_right"
+            android:src="@mipmap/arrow_right"
+            android:contentDescription="@string/botao_next"
             />
 
     </LinearLayout>
