@@ -1,8 +1,29 @@
 <resources>
     <string name="app_name">Sinapse Quiz</string>
-    <string name="Pergunta">Mercúrio é o planeta mais quente do sistema solar.</string>
     <string name="botao_verdade">Verdade</string>
     <string name="botao_mentira">Mentira</string>
     <string name="correct_answer">Correcto</string>
     <string name="incorrect_answer">incorrecto</string>
+    <string name="botao_next">Próxima Pergunta</string>
+
+    <string name="pergunta_astronomia_1">Mercúrio é o planeta mais quente do Sistema Solar</string>
+    <string name="pergunta_astronomia_2">Nós não podemos ver um buraco negro</string>
+    <string name="pergunta_astronomia_3">A estrela mais próxima da terra fica a cerca de 4,2421 anos-luz de distância</string>
+
+    <string name="pergunta_biologia_1">Um vírus pode infectar uma bactéria</string>
+    <string name="pergunta_biologia_2">A CoViD-19 é causada pelo Sars-Cov-2</string>
+
+
+    <string name="pergunta_religiao_1">Jesus já usou o chicote para expulsar alguém</string>
+    <string name="pergunta_religiao_2">Unicórnios são mencionados na Bíblia</string>
+
+    <string name="pergunta_geografia_1">O monte Everest é o monte mais alto do planeta Terra</string>
+    <string name="pergunta_geografia_2">A maior parte do oxigénio que respiramos vem das florestas</string>
+
+    <string name="pergunta_tecnologia_1">Programar é fácil</string>
+    <string name="pergunta_tecnologia_2">Um antivírus não detecta asinaturas de malwares que têm o seu código encriptado</string>
+    <string name="pergunta_tecnologia_3">Uma IA é apenas um simples programas com milhões de IFs e ELSEs</string>
+
+    <string name="pergunta_quimica_1">Um átomo é uma partícula indivisível</string>
+    <string name="pergunta_quimica_2">O vazio existe</string>
 </resources>

@@ -9,10 +9,10 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/pergunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="@string/Pergunta"
         />
 
     <LinearLayout
@@ -38,5 +38,11 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/botao_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/botao_next"
+        />
 
 </LinearLayout>
