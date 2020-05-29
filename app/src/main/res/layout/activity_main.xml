@@ -43,6 +43,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/botao_next"
+        android:drawableRight="@mipmap/arrow_right"
+        android:drawablePadding="4dp"
+        android:drawableEnd="@mipmap/arrow_right"
         />
 
 </LinearLayout>

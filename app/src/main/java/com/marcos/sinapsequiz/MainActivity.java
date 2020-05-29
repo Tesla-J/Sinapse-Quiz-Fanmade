@@ -38,9 +38,23 @@ public class MainActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
 
+    //metodos
     private void actualizarPergunta(){
         int pergunta = mListaDePerguntas[mCurrentIndex].getQuestao();
         mTextViewPergunta.setText(pergunta);
+    }
+
+    private void checarResposta(boolean respostaUsuario){
+        boolean respostaCerta = mListaDePerguntas[mCurrentIndex].isQuestaoVerdadeira();
+        int idMensagem;
+
+        if(respostaUsuario == respostaCerta) {
+            idMensagem = R.string.correct_answer;
+        } else {
+            idMensagem = R.string.incorrect_answer;
+        }
+
+        Toast.makeText(MainActivity.this, idMensagem, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -55,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mBotaoMentira.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(MainActivity.this, R.string.correct_answer, Toast.LENGTH_SHORT).show();
+                checarResposta(false);
             }
         });
 
@@ -63,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         mBotaoVerdade.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(MainActivity.this, R.string.incorrect_answer, Toast.LENGTH_SHORT).show();
+                checarResposta(true);
             }
         });
 
