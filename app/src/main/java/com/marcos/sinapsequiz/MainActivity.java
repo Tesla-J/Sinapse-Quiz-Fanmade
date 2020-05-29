@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mBotaoMentira;
     private Button mBotaoVerdade;
     private Button mBotaoNext;
+    private Button mBotaoPrevious;
     private TextView mTextViewPergunta;
 
     private FalseTrue[] mListaDePerguntas = new FalseTrue[] {
@@ -44,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
         mTextViewPergunta.setText(pergunta);
     }
 
+    private void retrocederPergunta(){
+        int fimLista = mListaDePerguntas.length -1;
+        mCurrentIndex = mCurrentIndex == 0 ? fimLista : --mCurrentIndex;
+        actualizarPergunta();
+    }
+
     private void checarResposta(boolean respostaUsuario){
         boolean respostaCerta = mListaDePerguntas[mCurrentIndex].isQuestaoVerdadeira();
         int idMensagem;
@@ -63,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mTextViewPergunta = (TextView) findViewById(R.id.pergunta);
+        mTextViewPergunta.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                retrocederPergunta();
+            }
+        });
 
         //eventos
         mBotaoMentira = (Button) findViewById(R.id.botao_mentira);
@@ -87,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 mCurrentIndex = (mCurrentIndex + 1) % mListaDePerguntas.length;
                 actualizarPergunta();
+            }
+        });
+
+        mBotaoPrevious = findViewById(R.id.botao_previous);
+        mBotaoPrevious.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                retrocederPergunta();
             }
         });
 
