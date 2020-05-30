@@ -2,6 +2,7 @@
 Apenas um simples Quiz para Android.
 
 **Nota Importante:** Esses códigos foram baseados nos do livro "*Android Programming - The big nerd ranch*".
+
 **Outra nota importante:** o termo "Sinapse Quiz" Veio do canal do YouTube [Ciência todo dia](https://youtube.com/cienciatododia).
 
 ## O que esperar?
