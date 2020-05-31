@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
     private Button mBotaoMentira;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
 
+    private static final String TAG ="SinapseQuiz";
+    private static final String KEY_INDEX = "indice";
+
     //metodos
     private void actualizarPergunta(){
         int pergunta = mListaDePerguntas[mCurrentIndex].getQuestao();
@@ -68,13 +72,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Log.d(TAG, "OnCreate(Bundle) called");
         setContentView(R.layout.activity_main);
 
         mTextViewPergunta = (TextView) findViewById(R.id.pergunta);
         mTextViewPergunta.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                retrocederPergunta();
+                actualizarPergunta();
             }
         });
 
@@ -112,6 +117,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(savedInstanceState != null){
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 2);
+        }
+
         actualizarPergunta();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        Log.d(TAG, "Instance state saved");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d(TAG, "onStart() called.");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause() called.");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d(TAG, "onResume() called.");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(TAG, "onStop() called.");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called.");
     }
 }
