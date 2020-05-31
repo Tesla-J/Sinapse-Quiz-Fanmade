@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -13,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
+        android:layout_gravity="center_horizontal"
         />
 
     <LinearLayout
@@ -20,6 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
+        android:layout_gravity="center_horizontal|center_vertical"
         >
 
         <Button
@@ -38,36 +38,32 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+
+
+    <ImageButton
+        android:id="@+id/botao_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:src="@mipmap/arrow_left"
+        android:contentDescription="@string/botao_preview"
+        android:layout_gravity="bottom|left"
+        />
+    -
 
-        <ImageButton
-            android:id="@+id/botao_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/arrow_left"
-            android:contentDescription="@string/botao_preview"
-            />
-        -
-
-        <ImageButton
-            android:id="@+id/botao_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/arrow_right"
-            android:contentDescription="@string/botao_next"
-            />
-
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/botao_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/arrow_right"
+        android:contentDescription="@string/botao_next"
+        android:layout_gravity="bottom|right"
+        />
 
     <Button
         android:id="@+id/botao_cheat"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:text="@string/botao_cheat"
+        android:layout_gravity="bottom|center_horizontal"
         />
-
-</LinearLayout>
+</FrameLayout>

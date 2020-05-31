@@ -5,7 +5,7 @@
     <string name="correct_answer">Correcto</string>
     <string name="incorrect_answer">incorrecto</string>
     <string name="botao_next">Botão para a próxima pergunta</string>
-    <string name="botao_preview">Botão para a próxima pergunta</string>
+    <string name="botao_preview">Botão para a pergunta anterior</string>
 
     <string name="pergunta_astronomia_1">Mercúrio é o planeta mais quente do Sistema Solar</string>
     <string name="pergunta_astronomia_2">Nós não podemos ver um buraco negro</string>
@@ -13,7 +13,6 @@
 
     <string name="pergunta_biologia_1">Um vírus pode infectar uma bactéria</string>
     <string name="pergunta_biologia_2">A CoViD-19 é causada pelo Sars-Cov-2</string>
-
 
     <string name="pergunta_religiao_1">Jesus já usou o chicote para expulsar alguém</string>
     <string name="pergunta_religiao_2">Unicórnios são mencionados na Bíblia</string>
@@ -27,4 +26,9 @@
 
     <string name="pergunta_quimica_1">Um átomo é uma partícula indivisível</string>
     <string name="pergunta_quimica_2">O vazio existe</string>
+
+    <string name="botao_cheat">Cheat!</string>
+    <string name="mensagem_aviso">Tem certeza que quer ver a resposta?</string>
+    <string name="botao_mostrar_resposta">Mostrar resposta</string>
+    <string name="toast_julgamento">Batotar é errado.</string>
 </resources>

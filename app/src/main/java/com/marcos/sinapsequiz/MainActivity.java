@@ -2,20 +2,23 @@ package com.marcos.sinapsequiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
-import android.util.Log;
+//import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
     private Button mBotaoMentira;
     private Button mBotaoVerdade;
+    private Button mBotaoCheat;
     private ImageButton mBotaoNext;
     private ImageButton mBotaoPrevious;
     private TextView mTextViewPergunta;
+    private boolean mIsCheater;
 
     private FalseTrue[] mListaDePerguntas = new FalseTrue[] {
             new FalseTrue(R.string.pergunta_astronomia_1, false),
@@ -41,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
 
-    private static final String TAG ="SinapseQuiz";
-    private static final String KEY_INDEX = "indice";
+    //private static final String TAG ="SinapseQuiz";
+    private static final String KEY_INDEX = "indice"; //usado como id do Bundle
 
     //metodos
     private void actualizarPergunta(){
@@ -60,10 +63,15 @@ public class MainActivity extends AppCompatActivity {
         boolean respostaCerta = mListaDePerguntas[mCurrentIndex].isQuestaoVerdadeira();
         int idMensagem;
 
-        if(respostaUsuario == respostaCerta) {
-            idMensagem = R.string.correct_answer;
-        } else {
-            idMensagem = R.string.incorrect_answer;
+        if(mIsCheater){
+            idMensagem = R.string.toast_julgamento;
+        }
+        else{
+            if(respostaUsuario == respostaCerta) {
+                idMensagem = R.string.correct_answer;
+            } else {
+                idMensagem = R.string.incorrect_answer;
+            }
         }
 
         Toast.makeText(MainActivity.this, idMensagem, Toast.LENGTH_SHORT).show();
@@ -105,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 mCurrentIndex = (mCurrentIndex + 1) % mListaDePerguntas.length;
+                mIsCheater = false;
                 actualizarPergunta();
             }
         });
@@ -118,19 +127,40 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if(savedInstanceState != null){
-            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 2);
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
+
+        mBotaoCheat = (Button) findViewById(R.id.botao_cheat);
+        mBotaoCheat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(MainActivity.this, CheatActivity.class);
+                boolean answerIsTrue = mListaDePerguntas[mCurrentIndex].isQuestaoVerdadeira();
+                i.putExtra(CheatActivity.EXTRA_ANSWER_IS_TRUE, answerIsTrue);
+                startActivityForResult(i, 0);
+            }
+        });
 
         actualizarPergunta();
     }
 
+
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
-        Log.d(TAG, "Instance state saved");
+        //Log.d(TAG, "Instance state saved");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
+    @Override
+    protected void onActivityResult(int resquestCode, int resultCode, Intent data){
+        if(data == null){
+            return;
+        }
+        mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN, false);
+    }
+
+/*
     @Override
     protected void onStart(){
         super.onStart();
@@ -160,4 +190,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "onDestroy() called.");
     }
+     */
 }
