@@ -14,6 +14,8 @@ public class CheatActivity extends AppCompatActivity {
     private boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
     private Button mShowAnswerButton;
+    private boolean isAnswerShown;
+    private static final String KEY_IS_CHEATER = "Is_Cheating";
 
     private void setAnswerShownResult(boolean isAnswerShown){
         Intent data = new Intent();
@@ -30,7 +32,11 @@ public class CheatActivity extends AppCompatActivity {
 
         mAnswerTextView = (TextView) findViewById(R.id.text_view_resposta);
 
-        setAnswerShownResult(false);
+        if(savedInstanceState != null) {
+            isAnswerShown = savedInstanceState.getBoolean(KEY_IS_CHEATER, false);
+        }
+
+        setAnswerShownResult(isAnswerShown);
         mShowAnswerButton = (Button) findViewById(R.id.botao_mostrar_resposta);
         mShowAnswerButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,8 +47,15 @@ public class CheatActivity extends AppCompatActivity {
                 else{
                     mAnswerTextView.setText(R.string.botao_mentira);
                 }
-                setAnswerShownResult(true);
+                isAnswerShown = true;
+                setAnswerShownResult(isAnswerShown);
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putBoolean(KEY_IS_CHEATER, isAnswerShown);
     }
 }

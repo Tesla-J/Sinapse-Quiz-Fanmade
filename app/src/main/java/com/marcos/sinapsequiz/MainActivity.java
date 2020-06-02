@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private static final String TAG ="SinapseQuiz";
     private static final String KEY_INDEX = "indice"; //usado como id do Bundle
+    private static final String KEY_IS_CHEATER = "User cheating";
 
     //metodos
     private void actualizarPergunta(){
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         boolean respostaCerta = mListaDePerguntas[mCurrentIndex].isQuestaoVerdadeira();
         int idMensagem;
 
-        if(mIsCheater){
+        if(mListaDePerguntas[mCurrentIndex].isCheater()){
             idMensagem = R.string.toast_julgamento;
         }
         else{
@@ -128,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(savedInstanceState != null){
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBoolean(KEY_IS_CHEATER, false);
+            mListaDePerguntas[mCurrentIndex].setIsCheater(mIsCheater);
         }
 
         mBotaoCheat = (Button) findViewById(R.id.botao_cheat);
@@ -150,11 +153,13 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         //Log.d(TAG, "Instance state saved");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+        savedInstanceState.putBoolean(KEY_IS_CHEATER, mIsCheater);
     }
 
     @Override
-    protected void onActivityResult(int resquestCode, int resultCode, Intent data){
-        if(data == null){
+    protected void onActivityResult(int resquestCode, int resultCode, Intent data) {
+        super.onActivityResult(resquestCode, resultCode, data);
+        if (data == null) {
             return;
         }
         mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN, false);

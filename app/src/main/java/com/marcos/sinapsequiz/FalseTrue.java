@@ -1,12 +1,12 @@
 package com.marcos.sinapsequiz;
 
 /*
-* Classe que armazena uma pergunta e sua resposta
+* Classe que armazena uma pergunta e sua resposta e se o usuario usou um cheat
 */
 public class FalseTrue{
     private int mQuestao;
-
     private boolean mQuestaoVerdadeira;
+    private boolean mIsCheater;
 
     public FalseTrue(int questao, boolean questaoVerdadeira){
         mQuestao = questao;
@@ -25,5 +25,12 @@ public class FalseTrue{
     }
     public void setQuestaoVerdadeira(boolean questaoVerdadeira){
         this.mQuestaoVerdadeira = questaoVerdadeira;
+    }
+
+    public void setIsCheater(boolean cheatConfirmation){
+        this.mIsCheater = cheatConfirmation;
+    }
+    public boolean isCheater(){
+        return this.mIsCheater;
     }
 }
