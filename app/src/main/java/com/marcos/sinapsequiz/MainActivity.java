@@ -1,14 +1,20 @@
 package com.marcos.sinapsequiz;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 //import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton mBotaoNext;
     private ImageButton mBotaoPrevious;
     private TextView mTextViewPergunta;
+    private TextView mApiVersionTextView;
     private boolean mIsCheater;
 
     private FalseTrue[] mListaDePerguntas = new FalseTrue[] {
@@ -48,18 +55,20 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_INDEX = "indice"; //usado como id do Bundle
     private static final String KEY_IS_CHEATER = "User cheating";
 
-    //metodos
+    /*Método para ir a pegunta seguinte*/
     private void actualizarPergunta(){
         int pergunta = mListaDePerguntas[mCurrentIndex].getQuestao();
         mTextViewPergunta.setText(pergunta);
     }
 
+    /*Método para retroceder para a pergunta anterior*/
     private void retrocederPergunta(){
         int fimLista = mListaDePerguntas.length -1;
         mCurrentIndex = mCurrentIndex == 0 ? fimLista : --mCurrentIndex;
         actualizarPergunta();
     }
 
+    /*Método para verificar se a resposta está certa*/
     private void checarResposta(boolean respostaUsuario){
         boolean respostaCerta = mListaDePerguntas[mCurrentIndex].isQuestaoVerdadeira();
         int idMensagem;
@@ -84,6 +93,18 @@ public class MainActivity extends AppCompatActivity {
         //Log.d(TAG, "OnCreate(Bundle) called");
         setContentView(R.layout.activity_main);
 
+        /*
+        * Código inútil, mas um dia pode ser necessário
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            ActionBar actionBar = getActionBar();
+            if (actionBar != null) {
+                actionBar.setSubtitle("Seja bem-vindo a mais um Sinapse Quiz.");
+            }
+        }
+
+         */
+
         mTextViewPergunta = (TextView) findViewById(R.id.pergunta);
         mTextViewPergunta.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -92,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //eventos
         mBotaoMentira = (Button) findViewById(R.id.botao_mentira);
         mBotaoMentira.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -127,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*Verifica o estado salvo, e restaura os dados guardados no estado anterior*/
         if(savedInstanceState != null){
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_IS_CHEATER, false);
@@ -143,6 +164,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, 0);
             }
         });
+
+        mApiVersionTextView = (TextView) findViewById(R.id.versao_api_textView);
+        mApiVersionTextView.setText("API Level " + Build.VERSION.SDK_INT); //Eu sei que na horizontal não vai aparecer bem em alguns dispositivos
 
         actualizarPergunta();
     }

@@ -59,6 +59,14 @@
         android:layout_gravity="bottom|right"
         />
 
+    <TextView
+        android:id="@+id/versao_api_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="right"
+        />
+
     <Button
         android:id="@+id/botao_cheat"
         android:layout_height="wrap_content"
